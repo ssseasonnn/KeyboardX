@@ -25,7 +25,7 @@ class ToolDialog(context: Context) : Dialog(context) {
     init {
         setCancelable(false)
         setCanceledOnTouchOutside(false)
-        setContentView(FrameLayout(context).apply { setBackgroundColor(Color.RED) })
+        setContentView(FrameLayout(context))
     }
 
     override fun show() {
