@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.Lifecycle.Event.ON_CREATE
+import androidx.lifecycle.Lifecycle.Event.ON_DESTROY
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import kotlinx.coroutines.flow.Flow
@@ -25,17 +27,13 @@ class KeyboardX {
 
         current.lifecycle.addObserver(object : LifecycleEventObserver {
             override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
-                if (event == Lifecycle.Event.ON_CREATE) {
+                if (event == ON_CREATE) {
                     dialog.show()
-                } else if (event == Lifecycle.Event.ON_DESTROY) {
+                } else if (event == ON_DESTROY) {
                     dialog.dismiss()
                 }
             }
         })
-    }
-
-    fun height(): Int {
-        return dialog.heightFlow.value
     }
 
     fun heightFlow(): Flow<Int> {
