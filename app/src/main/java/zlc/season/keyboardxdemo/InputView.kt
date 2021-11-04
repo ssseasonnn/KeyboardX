@@ -10,4 +10,8 @@ class InputView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : FrameLayout(context, attrs) {
     val binding = LayoutInputViewBinding.inflate(LayoutInflater.from(context), this, true)
+
+    fun setEmojiClick(block: () -> Unit) {
+        binding.emojiIcon.setOnClickListener { block() }
+    }
 }

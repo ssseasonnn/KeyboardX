@@ -32,19 +32,8 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        binding.inputView.post {
-//            binding.input.requestFocus()
-//            keyboardX.showKeyBoard(binding.inputView)
-        }
-
-        lifecycleScope.launch {
-            keyboardX.heightFlow()
-                .onEach {
-                    println(it)
-                    binding.inputView.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                        bottomMargin = it
-                    }
-                }.collect()
+        binding.inputView.setEmojiClick {
+            binding.emojiView.changeState()
         }
     }
 }

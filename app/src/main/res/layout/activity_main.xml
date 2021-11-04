@@ -26,21 +26,26 @@
         android:background="#0E0E0E"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <zlc.season.keyboardxdemo.InputView
-            android:id="@+id/input_view"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/emoji_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <zlc.season.keyboardxdemo.EmojiView
-            android:id="@+id/emoji_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
+
+            <zlc.season.keyboardxdemo.InputView
+                android:id="@+id/input_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <zlc.season.keyboardxdemo.EmojiView
+                android:id="@+id/emoji_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -41,6 +41,9 @@ class ToolDialog(context: Context) : Dialog(context) {
             setDecorFitsSystemWindows(it, false)
             setOnApplyWindowInsetsListener(it.decorView) { _, insets ->
                 val imeHeight = insets.getInsets(ime()).bottom
+                if (imeHeight > 0 && getLastHeight() != imeHeight) {
+                    saveLastHeight(imeHeight)
+                }
                 heightFlow.tryEmit(imeHeight)
                 insets
             }

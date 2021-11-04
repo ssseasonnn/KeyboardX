@@ -40,6 +40,10 @@ class KeyboardX {
         return dialog.heightFlow
     }
 
+    fun height(): Int {
+        return getLastHeight()
+    }
+
     fun showKeyBoard(view: View) {
         ViewCompat.getWindowInsetsController(view)?.show(WindowInsetsCompat.Type.ime())
     }
