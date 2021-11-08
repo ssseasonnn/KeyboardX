@@ -39,14 +39,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <zlc.season.keyboardxdemo.EmojiView
-                android:id="@+id/emoji_view"
+            <zlc.season.keyboardxdemo.KeyboardLayout
+                android:id="@+id/keyboard_layout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                 />
+                android:minHeight="300dp">
+
+                <zlc.season.keyboardxdemo.EmojiView
+                    android:id="@+id/emoji_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </zlc.season.keyboardxdemo.KeyboardLayout>
         </LinearLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

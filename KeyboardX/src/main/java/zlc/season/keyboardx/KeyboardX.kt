@@ -23,7 +23,7 @@ class KeyboardX {
             throw IllegalStateException("Need ComponentActivity!")
         }
 
-        dialog = ToolDialog(current)
+        dialog = ToolDialog.getInstance(current)
 
         current.lifecycle.addObserver(object : LifecycleEventObserver {
             override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
