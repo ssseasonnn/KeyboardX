@@ -1,20 +1,12 @@
 package zlc.season.keyboardxdemo
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 import zlc.season.keyboardx.KeyboardX
 import zlc.season.keyboardxdemo.databinding.ActivityMainBinding
 
@@ -35,5 +27,9 @@ class MainActivity : AppCompatActivity() {
         binding.inputView.setEmojiClick {
             binding.emojiView.changeState()
         }
+
+        keyboardX.heightFlow().onEach {
+            binding.inputView.updateLayoutParams<ViewGroup.MarginLayoutParams> { bottomMargin = it }
+        }.launchIn(lifecycleScope)
     }
 }
