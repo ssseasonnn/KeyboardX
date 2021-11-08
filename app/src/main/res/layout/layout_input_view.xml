@@ -33,10 +33,11 @@
         android:layout_height="40dp"
         android:layout_marginEnd="5dp"
         android:padding="3dp"
-        android:src="@drawable/ic_emoji"
+        android:src="@drawable/selector_emotion"
         app:layout_constraintBottom_toBottomOf="@+id/input_bg"
         app:layout_constraintEnd_toStartOf="@+id/extra_icon"
-        app:layout_constraintTop_toTopOf="@+id/input_bg" />
+        app:layout_constraintTop_toTopOf="@+id/input_bg"
+        app:tint="@color/white" />
 
     <ImageView
         android:id="@+id/extra_icon"
@@ -44,8 +45,9 @@
         android:layout_height="40dp"
         android:layout_marginEnd="10dp"
         android:padding="3dp"
-        android:src="@drawable/ic_add"
+        android:src="@drawable/add"
         app:layout_constraintBottom_toBottomOf="@+id/input_bg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/input_bg" />
+        app:layout_constraintTop_toTopOf="@+id/input_bg"
+        app:tint="@color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>

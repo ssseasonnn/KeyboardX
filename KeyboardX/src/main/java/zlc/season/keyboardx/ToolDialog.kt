@@ -10,6 +10,7 @@ import android.view.Gravity.TOP
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.WindowManager.LayoutParams.*
 import android.widget.FrameLayout
+import androidx.core.view.ViewCompat
 import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import androidx.core.view.WindowInsetsCompat.Type.ime
@@ -62,5 +63,11 @@ class ToolDialog private constructor(context: Context) : Dialog(context) {
                 it.decorView.requestApplyInsets()
             }
         }
+    }
+
+    fun checkKeyBoardState(): Boolean {
+        val window = window ?: return false
+        val insets = ViewCompat.getRootWindowInsets(window.decorView)
+        return insets?.isVisible(ime()) ?: false
     }
 }

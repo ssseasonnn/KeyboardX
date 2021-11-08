@@ -24,16 +24,22 @@ class KeyboardLayout @JvmOverloads constructor(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        heightJob = keyboardX.heightFlow().onEach {
-            openJob?.cancel()
-            closeJob?.cancel()
-            animHeight(it.toFloat())
-        }.launchIn(coroutineScope)
+        if (!isInEditMode) {
+            heightJob = keyboardX.heightFlow().onEach {
+                if (it > 0) {
+                    openJob?.cancel()
+                    closeJob?.cancel()
+                    animHeight(it.toFloat())
+                }
+            }.launchIn(coroutineScope)
+        }
     }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        heightJob?.cancel()
+        if (!isInEditMode) {
+            heightJob?.cancel()
+        }
     }
 
     fun isOpen(): Boolean {

@@ -44,6 +44,10 @@ class KeyboardX {
         return getLastHeight()
     }
 
+    fun isKeyBoardShow(): Boolean {
+        return dialog.checkKeyBoardState()
+    }
+
     fun showKeyBoard(view: View) {
         ViewCompat.getWindowInsetsController(view)?.show(WindowInsetsCompat.Type.ime())
     }
