@@ -53,7 +53,7 @@ class EmojiView @JvmOverloads constructor(
 //            var marginBottom = if (it > 0) it.toFloat() else (-300).px
 //            println("marginBottom: $marginBottom")
             println("imeHeight:$it")
-//            (binding.root.parent as View).animHeight(it.toFloat())
+            (binding.root.parent as View).animHeight(it.toFloat())
 //            (binding.root.parent as View).post {
 //                println((binding.root.parent as View).height)
 //            }

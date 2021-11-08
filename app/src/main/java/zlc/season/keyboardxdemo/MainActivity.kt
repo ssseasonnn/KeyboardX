@@ -28,8 +28,8 @@ class MainActivity : AppCompatActivity() {
             binding.emojiView.changeState()
         }
 
-        keyboardX.heightFlow().onEach {
-            binding.inputView.updateLayoutParams<ViewGroup.MarginLayoutParams> { bottomMargin = it }
-        }.launchIn(lifecycleScope)
+//        keyboardX.heightFlow().onEach {
+//            binding.inputView.updateLayoutParams<ViewGroup.MarginLayoutParams> { bottomMargin = it }
+//        }.launchIn(lifecycleScope)
     }
 }
