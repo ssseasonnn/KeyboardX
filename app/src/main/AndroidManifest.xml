@@ -16,7 +16,7 @@
             android:label="@string/app_name"
             android:screenOrientation="sensor"
             android:theme="@style/Theme.KeyboardXDemo.NoActionBar"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
