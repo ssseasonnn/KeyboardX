@@ -1,6 +1,8 @@
 package zlc.season.keyboardx
 
+import android.content.Context
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.ComponentActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -61,11 +63,30 @@ class KeyboardX {
         return dialog.checkKeyboardState()
     }
 
+    /**
+     * Show keyboard, need focus
+     */
     fun showKeyboard(view: View) {
         ViewCompat.getWindowInsetsController(view)?.show(WindowInsetsCompat.Type.ime())
     }
 
+    /**
+     * Hide keyboard, need focus
+     */
     fun hideKeyboard(view: View) {
         ViewCompat.getWindowInsetsController(view)?.hide(WindowInsetsCompat.Type.ime())
+    }
+
+    /**
+     * Force show keyboard,no need focus
+     */
+    fun forceShowKeyboard(view: View) {
+        val imm = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        imm?.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+    }
+
+    fun forceHideKeyboard(view: View) {
+        val imm = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        imm?.toggleSoftInput(0, 0)
     }
 }

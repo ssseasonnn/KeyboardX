@@ -19,10 +19,17 @@ class InputView @JvmOverloads constructor(
         (parent as ViewGroup).findViewById<KeyboardLayout>(R.id.keyboard_layout)
     }
 
+    fun showKeyboard() {
+        binding.input.requestFocus()
+        binding.input.post { keyboardX.showKeyboard(binding.input) }
+    }
+
     private fun isEmojiSelected(): Boolean = binding.emojiIcon.isSelected
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
+
+        if (isInEditMode) return
 
         keyboardX.visibleFlow().onEach {
             if (!it && !isEmojiSelected()) {
@@ -31,25 +38,23 @@ class InputView @JvmOverloads constructor(
         }.launchIn(currentScope)
 
         binding.input.setOnClickListener {
-            binding.input.requestFocus()
             if (binding.emojiIcon.isSelected) {
                 binding.emojiIcon.isSelected = false
             }
             if (!keyboardX.isKeyboardShow()) {
-                keyboardX.showKeyboard(this)
+                keyboardX.showKeyboard(binding.input)
             }
         }
 
         binding.emojiIcon.setOnClickListener {
             it.isSelected = !it.isSelected
-            binding.input.requestFocus()
             if (it.isSelected) {
                 keyboardLayout.open()
                 if (keyboardX.isKeyboardShow()) {
-                    keyboardX.hideKeyboard(this)
+                    keyboardX.forceHideKeyboard(binding.input)
                 }
             } else {
-                keyboardX.showKeyboard(this)
+                keyboardX.showKeyboard(binding.input)
             }
         }
     }
