@@ -57,15 +57,15 @@ class KeyboardX {
         return dialog.visibleFlow
     }
 
-    fun isKeyBoardShow(): Boolean {
-        return dialog.checkKeyBoardState()
+    fun isKeyboardShow(): Boolean {
+        return dialog.checkKeyboardState()
     }
 
-    fun showKeyBoard(view: View) {
+    fun showKeyboard(view: View) {
         ViewCompat.getWindowInsetsController(view)?.show(WindowInsetsCompat.Type.ime())
     }
 
-    fun hideKeyBoard(view: View) {
+    fun hideKeyboard(view: View) {
         ViewCompat.getWindowInsetsController(view)?.hide(WindowInsetsCompat.Type.ime())
     }
 }

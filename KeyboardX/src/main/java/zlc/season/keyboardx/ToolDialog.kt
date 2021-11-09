@@ -70,7 +70,7 @@ class ToolDialog private constructor(context: Context) : Dialog(context) {
         }
     }
 
-    fun checkKeyBoardState(): Boolean {
+    fun checkKeyboardState(): Boolean {
         val window = window ?: return false
         val insets = ViewCompat.getRootWindowInsets(window.decorView)
         return insets?.isVisible(ime()) ?: false

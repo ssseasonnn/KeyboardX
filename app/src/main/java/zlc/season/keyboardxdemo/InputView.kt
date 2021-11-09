@@ -38,8 +38,8 @@ class InputView @JvmOverloads constructor(
             if (binding.emojiIcon.isSelected) {
                 binding.emojiIcon.isSelected = false
             }
-            if (!keyboardX.isKeyBoardShow()) {
-                keyboardX.showKeyBoard(this)
+            if (!keyboardX.isKeyboardShow()) {
+                keyboardX.showKeyboard(this)
             }
         }
 
@@ -48,11 +48,11 @@ class InputView @JvmOverloads constructor(
             binding.input.requestFocus()
             if (it.isSelected) {
                 keyboardLayout.open()
-                if (keyboardX.isKeyBoardShow()) {
-                    keyboardX.hideKeyBoard(this)
+                if (keyboardX.isKeyboardShow()) {
+                    keyboardX.hideKeyboard(this)
                 }
             } else {
-                keyboardX.showKeyBoard(this)
+                keyboardX.showKeyboard(this)
             }
         }
     }
