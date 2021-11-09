@@ -3,8 +3,6 @@ package zlc.season.keyboardxdemo
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
-import androidx.core.app.ComponentActivity
-import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -16,7 +14,6 @@ class KeyboardLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : FrameLayout(context, attrs) {
     private val keyboardX by lazy { KeyboardX() }
-    private val coroutineScope by lazy { (context as ComponentActivity).lifecycleScope }
 
     private var heightJob: Job? = null
     private var openJob: Job? = null
@@ -31,7 +28,7 @@ class KeyboardLayout @JvmOverloads constructor(
                     closeJob?.cancel()
                     realAnimHeight(it.toFloat())
                 }
-            }.launchIn(coroutineScope)
+            }.launchIn(currentScope)
         }
     }
 
@@ -57,7 +54,7 @@ class KeyboardLayout @JvmOverloads constructor(
     fun open() {
         closeJob?.cancel()
         openJob?.cancel()
-        openJob = coroutineScope.launch {
+        openJob = currentScope.launch {
             val imeHeight = keyboardX.height()
             if (imeHeight == 0) {
                 realAnimHeight(minimumHeight.toFloat())
@@ -70,7 +67,7 @@ class KeyboardLayout @JvmOverloads constructor(
     fun close() {
         openJob?.cancel()
         closeJob?.cancel()
-        closeJob = coroutineScope.launch {
+        closeJob = currentScope.launch {
             realAnimHeight(0f)
         }
     }

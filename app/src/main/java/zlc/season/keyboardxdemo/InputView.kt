@@ -5,8 +5,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.core.app.ComponentActivity
-import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import zlc.season.keyboardx.KeyboardX
@@ -20,7 +18,6 @@ class InputView @JvmOverloads constructor(
     private val keyboardLayout by lazy {
         (parent as ViewGroup).findViewById<KeyboardLayout>(R.id.keyboard_layout)
     }
-    private val coroutineScope by lazy { (context as ComponentActivity).lifecycleScope }
 
     private fun isEmojiSelected(): Boolean = binding.emojiIcon.isSelected
 
@@ -31,7 +28,7 @@ class InputView @JvmOverloads constructor(
             if (!it && !isEmojiSelected()) {
                 keyboardLayout.close()
             }
-        }.launchIn(coroutineScope)
+        }.launchIn(currentScope)
 
         binding.input.setOnClickListener {
             binding.input.requestFocus()

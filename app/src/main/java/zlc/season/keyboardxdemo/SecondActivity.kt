@@ -1,22 +1,19 @@
 package zlc.season.keyboardxdemo
 
-import android.content.Intent
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import zlc.season.keyboardxdemo.databinding.ActivityMainBinding
+import zlc.season.keyboardxdemo.databinding.ActivitySecondBinding
 
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
-
+class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        val binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
-        binding.test.setOnClickListener {
-            startActivity(Intent(this, SecondActivity::class.java))
+        binding.input.setOnClickListener {
+            InputDialog().show(supportFragmentManager, "")
         }
     }
 }
