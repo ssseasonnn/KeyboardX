@@ -16,17 +16,7 @@ import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import androidx.core.view.WindowInsetsCompat.Type.ime
 import kotlinx.coroutines.flow.MutableStateFlow
 
-class ToolDialog private constructor(context: Context) : Dialog(context) {
-    companion object {
-        @Volatile
-        private var INSTANCE: ToolDialog? = null
-
-        fun getInstance(context: Context): ToolDialog =
-            INSTANCE ?: synchronized(this) {
-                INSTANCE ?: ToolDialog(context).also { INSTANCE = it }
-            }
-    }
-
+class ToolDialog(context: Context) : Dialog(context) {
     val visibleFlow = MutableStateFlow(false)
     val heightFlow = MutableStateFlow(0)
 
