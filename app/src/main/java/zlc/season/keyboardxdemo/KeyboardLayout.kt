@@ -29,7 +29,7 @@ class KeyboardLayout @JvmOverloads constructor(
                 if (it > 0) {
                     openJob?.cancel()
                     closeJob?.cancel()
-                    animHeight(it.toFloat())
+                    realAnimHeight(it.toFloat())
                 }
             }.launchIn(coroutineScope)
         }
@@ -60,9 +60,9 @@ class KeyboardLayout @JvmOverloads constructor(
         openJob = coroutineScope.launch {
             val imeHeight = keyboardX.height()
             if (imeHeight == 0) {
-                animHeight(minimumHeight.px)
+                realAnimHeight(minimumHeight.toFloat())
             } else {
-                animHeight(imeHeight.toFloat())
+                realAnimHeight(imeHeight.toFloat())
             }
         }
     }
@@ -71,7 +71,11 @@ class KeyboardLayout @JvmOverloads constructor(
         openJob?.cancel()
         closeJob?.cancel()
         closeJob = coroutineScope.launch {
-            animHeight(0f)
+            realAnimHeight(0f)
         }
+    }
+
+    private suspend fun realAnimHeight(to: Float, duration: Long = 200) {
+        animHeight(to = to, duration = duration)
     }
 }

@@ -27,6 +27,7 @@ class ToolDialog private constructor(context: Context) : Dialog(context) {
             }
     }
 
+    val visibleFlow = MutableStateFlow(false)
     val heightFlow = MutableStateFlow(0)
 
     init {
@@ -56,6 +57,10 @@ class ToolDialog private constructor(context: Context) : Dialog(context) {
                     saveLastHeight(imeHeight)
                 }
                 heightFlow.tryEmit(imeHeight)
+
+                val imeVisible = insets.isVisible(ime())
+                visibleFlow.tryEmit(imeVisible)
+
                 insets
             }
 

@@ -36,12 +36,25 @@ class KeyboardX {
         })
     }
 
+    /**
+     * Flow with keyboard height
+     */
     fun heightFlow(): Flow<Int> {
         return dialog.heightFlow
     }
 
+    /**
+     * Return keyboard height
+     */
     fun height(): Int {
         return getLastHeight()
+    }
+
+    /**
+     * Flow with keyboard visible
+     */
+    fun visibleFlow(): Flow<Boolean> {
+        return dialog.visibleFlow
     }
 
     fun isKeyBoardShow(): Boolean {
