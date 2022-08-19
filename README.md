@@ -6,7 +6,7 @@
 
 ## Prepare
 
-1. Add jitpack to build.gradle
+### 1. Add jitpack to build.gradle
 ```gradle
 allprojects {
     repositories {
@@ -16,7 +16,7 @@ allprojects {
 }
 ```
 
-2.  Add dependency
+### 2.  Add dependency
 
 ```gradle
 dependencies {
@@ -26,7 +26,7 @@ dependencies {
 
 ## Usage
 
-- Basic Usage
+### Basic Usage
 
 ```kotlin
 class MainActivity : AppCompatActivity() {
