@@ -37,6 +37,12 @@ class InputView @JvmOverloads constructor(
             }
         }.launchIn(currentScope)
 
+        keyboardX.heightFlow().onEach {
+            if (it != 0 || !isEmojiSelected()) {
+                keyboardLayout.animate(it.toFloat())
+            }
+        }.launchIn(currentScope)
+
         binding.input.setOnClickListener {
             if (binding.emojiIcon.isSelected) {
                 binding.emojiIcon.isSelected = false
@@ -49,7 +55,8 @@ class InputView @JvmOverloads constructor(
         binding.emojiIcon.setOnClickListener {
             it.isSelected = !it.isSelected
             if (it.isSelected) {
-                keyboardLayout.open()
+                keyboardLayout.open(keyboardX.height())
+
                 if (keyboardX.isKeyboardShow()) {
                     keyboardX.forceHideKeyboard(binding.input)
                 }
